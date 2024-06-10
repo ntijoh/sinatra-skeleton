@@ -12,3 +12,7 @@ end
 task :run do
     #todo
 end
+
+task :test do
+    #todo
+end

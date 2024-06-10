@@ -5,7 +5,6 @@ source 'https://rubygems.org'
 
 gem 'rack'
 gem 'rackup'
-gem 'thin'
 gem 'sinatra'
 gem 'rerun'
 gem 'sqlite3'

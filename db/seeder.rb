@@ -1,6 +1,14 @@
 require 'sqlite3'
 
-def db
+class Seeder 
+
+def self.seed!
+    drop_tables
+    create_tables
+    seed_tables
+end
+
+def self.db
     if @db == nil
         @db = SQLite3::Database.new('./db/db.sqlite')
         @db.results_as_hash = true
@@ -8,11 +16,11 @@ def db
     return @db
 end
 
-def drop_tables
+def self.drop_tables
     db.execute('DROP TABLE IF EXISTS fruits')
 end
 
-def create_tables
+def self.create_tables
 
     db.execute('CREATE TABLE fruits(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,7 +30,7 @@ def create_tables
 
 end
 
-def seed_tables
+def self.seed_tables
 
     fruits = [
         {name: 'Pear', description: 'a sweet, juicy, yellow or green fruit with a round base and slightly pointed top'},
@@ -32,11 +40,9 @@ def seed_tables
     ]
 
     fruits.each do |fruit|
-        db.execute('INSERT INTO fruits (name, description) VALUES (?,?)', fruit[:name], fruit[:description])
+        db.execute('INSERT INTO fruits (name, description) VALUES (?,?)', [fruit[:name], fruit[:description]])
     end
 
 end
 
-drop_tables
-create_tables
-seed_tables
+end 

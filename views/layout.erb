@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sinatra skeleton</title>
+    <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>"> 
 </head>
 <body>
-    <h1>Hello from layout.erb</h1>
-    <%= yield %>
-    <span>Hello again from layout.erb</span>
+    <header>
+        <h1>Hello from layout.erb</h1>
+    </header>
+    <main>
+        <%= yield %>
+    </main>
+    <footer>
+        <h2>Hello again from layout.erb</h2>
+    </footer>
 </body>
 </html>
